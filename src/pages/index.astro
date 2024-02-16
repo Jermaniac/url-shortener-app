@@ -3,7 +3,9 @@ import Input from "../components/Input.astro";
 import Layout from "../layouts/Layout.astro";
 import CustomTable from "../components/CustomTable.astro";
 
-const data = await fetch("http://localhost:3000/urls").then((r) => r.json());
+const data = await fetch(
+  "https://url-shortener-back-0fb11a578ffe.herokuapp.com/urls"
+).then((r) => r.json());
 ---
 
 <Layout title="url-shortener">
