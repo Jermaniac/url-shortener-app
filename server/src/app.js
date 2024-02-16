@@ -3,10 +3,12 @@ const { connectToDatabase } = require("./config/db");
 const Url = require("./models/urls");
 const bodyParser = require("body-parser");
 const { customAlphabet } = require("nanoid");
+const cors = require("cors");
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 connectToDatabase();
 
