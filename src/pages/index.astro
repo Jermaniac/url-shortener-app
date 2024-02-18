@@ -3,7 +3,7 @@ import Input from "../components/Input.astro";
 import Layout from "../layouts/Layout.astro";
 import CustomTable from "../components/CustomTable.astro";
 
-const herokuUri = import.meta.env.PUBLIC_HEROKU_URI;
+const herokuUri = import.meta.env.VITE_HEROKU_URI;
 const data = await fetch(`${herokuUri}/urls`).then((r) => r.json());
 ---
 
