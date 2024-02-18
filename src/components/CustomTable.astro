@@ -1,8 +1,0 @@
----
-// Create a custom table with named slot placeholders for head and body content
----
-
-<table class="bg-pink-900 border table-fixed w-full break-words">
-  <thead class="text-xl"><slot name="header" /></thead>
-  <tbody class="[&_tr:nth-child(odd)]:bg-gray-800"><slot name="body" /></tbody>
-</table>
