@@ -22,7 +22,7 @@ const { label, type } = Astro.props;
       ) as HTMLFormElement;
       const data = new FormData(formulario);
       const longUrl = data.get("long_url");
-      const response = await fetch(`${import.meta.env.HEROKU_UI}/add`, {
+      const response = await fetch(`${import.meta.env.VITE_HEROKU_UI}/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
