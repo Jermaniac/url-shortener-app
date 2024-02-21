@@ -24,7 +24,15 @@ const data = await fetch(`${herokuUri}/urls`).then((r) => r.json());
           data &&
             data.map((item: any) => (
               <tr>
-                <td>{item.short_url}</td>
+                <td>
+                  <a
+                    href={`${import.meta.env.VITE_HEROKU_URI}/${
+                      item.short_url
+                    }`}
+                  >
+                    {item.short_url}
+                  </a>
+                </td>
                 <td>{item.long_url}</td>
               </tr>
             ))
