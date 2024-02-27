@@ -7,11 +7,24 @@ interface Props {
 const { label, type } = Astro.props;
 ---
 
-<form id="formulario">
-  <label for="long_url">long_url</label>
-  <input class="text-black" type="text" id="long_url" name="long_url" />
-  <button type="button" id="upload-url">Send</button>
+<form id="formulario" class="flex justify-center mb-10">
+  <input
+    class="text-black flex-1"
+    placeholder="Paste here your URL"
+    type="text"
+    id="long_url"
+    name="long_url"
+  />
+  <button
+    class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+    type="button"
+    id="upload-url">Shorten this URL!</button
+  >
 </form>
+<p class="explanation">
+  Hey there! ✨ <br /> Tired of having super long URLs for your pages? <br
+  />Paste your link into the box above ⬆️ and get your new short link!
+</p>
 
 <script>
   const sendButton = document.getElementById("upload-url") as HTMLButtonElement;
@@ -41,3 +54,19 @@ const { label, type } = Astro.props;
     }
   });
 </script>
+
+<style>
+  .explanation {
+    margin-bottom: 2rem;
+    border: 1px solid rgba(var(--accent-light), 25%);
+    background: linear-gradient(
+      rgba(var(--accent-dark), 66%),
+      rgba(var(--accent-dark), 33%)
+    );
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  .explanation strong {
+    color: rgb(var(--accent-light));
+  }
+</style>
