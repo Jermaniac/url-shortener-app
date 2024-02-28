@@ -2,7 +2,8 @@
 // Create a custom table with named slot placeholders for head and body content
 ---
 
-<table class="bg-purple-800 border table-fixed w-full font-semibold">
-  <thead class="text-xl"><slot name="header" /></thead>
-  <tbody class="[&_tr:nth-child(odd)]:bg-gray-800"><slot name="body" /></tbody>
+<table class="border table-fixed w-full font-semibold">
+  <thead class="text-xl bg-purple-900"><slot name="header" /></thead>
+  <tbody class="[&_tr:nth-child(odd)]:bg-purple-600"><slot name="body" /></tbody
+  >
 </table>

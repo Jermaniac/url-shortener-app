@@ -7,16 +7,16 @@ interface Props {
 const { label, type } = Astro.props;
 ---
 
-<form id="formulario" class="flex justify-center mb-10">
+<form id="formulario" class="grid md:grid-cols-3 mb-10">
   <input
-    class="text-black flex-1"
+    class="text-base text-black md:col-span-2"
     placeholder="Paste here your URL"
     type="text"
     id="long_url"
     name="long_url"
   />
   <button
-    class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+    class="bg-purple-500 hover:bg-purple-700 text-base font-bold py-2 px-4 rounded md:col-span-1"
     type="button"
     id="upload-url">Shorten this URL!</button
   >
