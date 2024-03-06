@@ -2,12 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import CustomTable from "../components/CustomTable.astro";
 
-const herokuUri = import.meta.env.VITE_HEROKU_URI;
+const herokuUri = import.meta.env.PUBLIC_VITE_HEROKU_URI;
 const data = await fetch(`${herokuUri}/urls`).then((r) => r.json());
 ---
 
 <Layout title="URL stats">
-  <main>
+  <main class="flex justify-center m-5 p-4">
     <CustomTable>
       <Fragment slot="header">
         <tr><th>short_url</th><th>long_url</th></tr>
@@ -20,7 +20,7 @@ const data = await fetch(`${herokuUri}/urls`).then((r) => r.json());
               <tr>
                 <td>
                   <a
-                    href={`${import.meta.env.VITE_HEROKU_URI}/${
+                    href={`${import.meta.env.PUBLIC_VITE_HEROKU_URI}/${
                       item.short_url
                     }`}
                   >

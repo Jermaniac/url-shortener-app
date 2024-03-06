@@ -5,13 +5,17 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="home-url-shortener">
   <main>
-    <Input label="url" type="text" />
+    <Input
+      label="url"
+      type="text"
+      url={import.meta.env.PUBLIC_VITE_HEROKU_URI}
+    />
   </main>
 </Layout>
 
 <style>
   main {
-    margin: auto;
+    margin: 1.25rem;
     padding: 1rem;
     width: 800px;
     max-width: calc(100% - 2rem);

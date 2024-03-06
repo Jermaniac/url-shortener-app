@@ -2,9 +2,10 @@
 interface Props {
   label: string;
   type: string;
+  url: string;
 }
 
-const { label, type } = Astro.props;
+const { label, type, url } = Astro.props;
 ---
 
 <form id="formulario" class="grid md:grid-cols-3 mb-10">
@@ -35,13 +36,16 @@ const { label, type } = Astro.props;
       ) as HTMLFormElement;
       const data = new FormData(formulario);
       const longUrl = data.get("long_url");
-      const response = await fetch(`${import.meta.env.VITE_HEROKU_URI}/add`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ long_url: longUrl }),
-      });
+      const response = await fetch(
+        `${import.meta.env.PUBLIC_VITE_HEROKU_URI}/add`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ long_url: longUrl }),
+        }
+      );
       if (response.ok) {
         console.log("Solicitud exitosa");
       } else {
