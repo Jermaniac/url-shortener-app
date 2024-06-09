@@ -37,7 +37,7 @@ const { label, type, url } = Astro.props;
       const data = new FormData(formulario);
       const longUrl = data.get("long_url");
       const response = await fetch(
-        `${import.meta.env.PUBLIC_VITE_HEROKU_URI}/add`,
+        `${import.meta.env.PUBLIC_VITE_BACKEND_URI}/add`,
         {
           method: "POST",
           headers: {
