@@ -2,8 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import CustomTable from "../components/CustomTable.astro";
 
-const herokuUri = import.meta.env.PUBLIC_VITE_HEROKU_URI;
-const data = await fetch(`${herokuUri}/urls`).then((r) => r.json());
+const herokuUri = import.meta.env.PUBLIC_VITE_BACKEND_URI;
+const data = await fetch(`${herokuUri}/urls`)
+  .then((r) => r.json())
+  .catch((error) => console.error("An error ocurred.", error));
 ---
 
 <Layout title="URL stats">
