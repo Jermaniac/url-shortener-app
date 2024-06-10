@@ -27,10 +27,14 @@ const generateUniqueCode = async () => {
 
 app.get("/urls", async (req, res) => {
   try {
-    const urls = await Url.find({});
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.pageSize) || 10;
+    const skip = (page - 1) * pageSize;
+
+    const urls = await Url.find({}).skip(skip).limit(pageSize);
     res.json(urls);
   } catch (error) {
-    res.status(500).send("Error retrieving URLs: ", error);
+    res.status(500).send("Error retrieving URLs: " + error.message);
   }
 });
 
