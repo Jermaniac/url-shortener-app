@@ -31,8 +31,18 @@ app.get("/urls", async (req, res) => {
     const pageSize = parseInt(req.query.pageSize) || 10;
     const skip = (page - 1) * pageSize;
 
+    const totalCount = await Url.countDocuments({});
+    const totalPages = Math.ceil(totalCount / pageSize);
+
     const urls = await Url.find({}).skip(skip).limit(pageSize);
-    res.json(urls);
+
+    res.json({
+      data: urls,
+      page,
+      pageSize,
+      totalPages: totalPages,
+      totalCount: totalCount,
+    });
   } catch (error) {
     res.status(500).send("Error retrieving URLs: " + error.message);
   }
