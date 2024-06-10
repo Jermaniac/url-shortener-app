@@ -1,14 +1,14 @@
 ---
+import { type APIUrlsResponse, type URL } from "../types/api";
 import Layout from "../layouts/Layout.astro";
 import CustomTable from "../components/CustomTable.astro";
 
 const backendUri = import.meta.env.PUBLIC_VITE_BACKEND_URI;
-const data = await fetch(`${backendUri}/urls`)
-  .then((r) => r.json())
-  .catch((error) => console.error("An error ocurred.", error));
+const response = await fetch(`${backendUri}/urls?page=1&pageSize=10`);
+const { data: urls } = (await response.json()) as APIUrlsResponse;
 ---
 
-<Layout title="URL stats">
+<Layout title="URL">
   <main class="flex justify-center m-5 p-4">
     <CustomTable>
       <Fragment slot="header">
@@ -17,8 +17,8 @@ const data = await fetch(`${backendUri}/urls`)
 
       <Fragment slot="body">
         {
-          data &&
-            data.map((item: any) => (
+          urls &&
+            urls.map((item: URL) => (
               <tr>
                 <td>
                   <a
