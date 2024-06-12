@@ -44,7 +44,7 @@ app.get("/urls", async (req, res) => {
       totalCount: totalCount,
     });
   } catch (error) {
-    res.status(500).send("Error retrieving URLs: " + error.message);
+    res.status(503).send({ error: error.message });
   }
 });
 
@@ -58,7 +58,7 @@ app.get("/:id", async (req, res, next) => {
     if (urlFound) res.redirect(urlFound.long_url);
     next();
   } catch (error) {
-    res.status(500).send("Error finding URL: ", error);
+    res.status(503).send({ error: error.message });
   }
 });
 
@@ -67,7 +67,7 @@ app.post("/add", async (req, res) => {
     const { long_url } = req.body;
     const urlFound = await Url.findOne({ long_url });
     if (urlFound) {
-      throw new Error("URL already exists");
+      return res.status(409).send({ error: "URL already in DB" });
     }
     const shortUrl = await generateUniqueCode();
     const url = await Url.create({
@@ -78,7 +78,7 @@ app.post("/add", async (req, res) => {
     });
     res.status(200).send({ short_url: url.short_url });
   } catch (error) {
-    res.status(500).send("Error adding a new url: ", error);
+    res.status(503).send({ error: error.message });
   }
 });
 
