@@ -65,6 +65,10 @@ app.get("/:id", async (req, res, next) => {
 app.post("/add", async (req, res) => {
   try {
     const { long_url } = req.body;
+    const urlFound = await Url.findOne({ long_url });
+    if (urlFound) {
+      throw new Error("URL already exists");
+    }
     const shortUrl = await generateUniqueCode();
     const url = await Url.create({
       long_url: long_url,
