@@ -7,6 +7,6 @@ export default defineConfig({
   output: "hybrid",
   integrations: [tailwind(), preact()],
   adapter: vercel({
-    excludeFiles: ["./src/pages/urls.astro"],
+    isr: false,
   }),
 });
