@@ -53,7 +53,7 @@ app.get("/:id", async (req, res, next) => {
     const urlFound = await Url.findOne({ short_url: req.params.id });
     await Url.updateOne(
       { _id: urlFound._id },
-      { $set: { visits: urlFound.visits || 0 + 1, updated_at: new Date() } }
+      { $set: { visits: urlFound.visits + 1, updated_at: new Date() } }
     );
     if (urlFound) res.redirect(urlFound.long_url);
     next();
