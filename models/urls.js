@@ -8,6 +8,7 @@ const UrlSchema = new Schema({
     type: String,
     unique: true,
   },
+  visits: Number,
   updated_at: Date,
 });
 

@@ -51,6 +51,10 @@ app.get("/urls", async (req, res) => {
 app.get("/:id", async (req, res, next) => {
   try {
     const urlFound = await Url.findOne({ short_url: req.params.id });
+    await Url.updateOne(
+      { _id: urlFound._id },
+      { $set: { visit: urlFound.visits + 1, updated_at: new Date() } }
+    );
     if (urlFound) res.redirect(urlFound.long_url);
     next();
   } catch (error) {
@@ -65,6 +69,7 @@ app.post("/add", async (req, res) => {
     const url = await Url.create({
       long_url: long_url,
       short_url: shortUrl,
+      visits: 0,
       updated_at: new Date(),
     });
     res.status(200).send({ short_url: url.short_url });
