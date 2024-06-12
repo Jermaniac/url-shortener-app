@@ -1,15 +1,11 @@
 ---
-import Input from "../components/Input.astro";
+import Input from "../components/Input";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="home-url-shortener">
   <main>
-    <Input
-      label="url"
-      type="text"
-      url={import.meta.env.PUBLIC_VITE_BACKEND_URI}
-    />
+    <Input client:load />
   </main>
 </Layout>
 

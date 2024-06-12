@@ -20,8 +20,7 @@ const { title } = Astro.props;
     <h1><span class="text-gradient">URL Shortener</span></h1>
     <nav class="flex justify-center gap-x-5 my-5 text-xl font-medium">
       <a href="/">Home</a>
-      <a href="/urls">URL's</a>
-      <a href="/stats">Stats</a>
+      <a href="/urls">URLs</a>
     </nav>
     <article>
       <slot />
@@ -31,7 +30,7 @@ const { title } = Astro.props;
 <style is:global>
   :root {
     --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
+    --accent-light: 255, 20, 147;
     --accent-dark: 49, 10, 101;
     --accent-gradient: linear-gradient(
       45deg,
@@ -45,17 +44,6 @@ const { title } = Astro.props;
     background: #13151a;
     background-size: 224px;
     color: white;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
   }
   h1 {
     font-weight: 700;

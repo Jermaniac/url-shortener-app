@@ -2,6 +2,8 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "types": ["vite/client"],
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }

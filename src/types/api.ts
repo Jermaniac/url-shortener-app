@@ -11,5 +11,6 @@ export type URL = {
     long_url:   string;
     short_url:  string;
     updated_at: Date;
-    __v?:       number;
+    visits: number,
+    __v?: number;
 }
