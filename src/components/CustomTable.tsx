@@ -1,3 +1,4 @@
+import { MouseIcon } from "../icons/MouseIcon";
 import type { URL } from "../types/api";
 
 interface CustomTableProps {
@@ -19,22 +20,18 @@ const CustomTable = ({ urls }: CustomTableProps) => {
           {urls &&
             urls.map((item: URL) => (
               <tr>
-                <td class="truncate cursor-pointer" id="truncatedText">
+                <td class="truncate" id="truncatedText">
                   {item.long_url}
                 </td>
                 <td>{item.visits}</td>
-                <td class="flex items-center justify-center">
+                <td class="flex items-center justify-center m-1.5">
                   <a
                     href={`${import.meta.env.PUBLIC_VITE_BACKEND_URI}/${
                       item.short_url
                     }`}
+                    target="_blank"
                   >
-                    <img
-                      src="mouse.svg"
-                      alt="mouse-icon"
-                      width="30"
-                      height="30"
-                    />
+                    <MouseIcon />
                   </a>
                 </td>
               </tr>

@@ -22,7 +22,11 @@ pnpm-debug.log*
 
 .vscode
 
+# Secrets
 .env
 
 # Vercel files
 .vercel
+
+# Astro files
+.astro
