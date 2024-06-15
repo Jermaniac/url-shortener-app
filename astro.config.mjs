@@ -4,7 +4,7 @@ import vercel from "@astrojs/vercel/serverless";
 import preact from "@astrojs/preact";
 
 export default defineConfig({
-  output: "server",
+  output: "hybrid",
   integrations: [tailwind(), preact()],
   adapter: vercel(),
 });
