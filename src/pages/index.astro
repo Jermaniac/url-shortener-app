@@ -1,4 +1,5 @@
 ---
+import InfoComponent from "../components/InfoComponent";
 import Input from "../components/Input";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -6,6 +7,9 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="home-url-shortener">
   <main>
     <Input client:load />
+    <InfoComponent
+      message={"Hey there! ✨<br/>Tired of having super long URLs for your pages? <br/>Paste your link into the box above ⬆️ and get your new short link!"}
+    />
   </main>
 </Layout>
 

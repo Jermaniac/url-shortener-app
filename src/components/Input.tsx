@@ -97,11 +97,6 @@ const Input = () => {
           colorClass="bg-gradient-to-r from-red-600 to-red-700"
         />
       )}
-      <InfoComponent
-        message={
-          "Hey there! ✨<br/>Tired of having super long URLs for your pages? <br/>Paste your link into the box above ⬆️ and get your new short link!"
-        }
-      />
     </div>
   );
 };
