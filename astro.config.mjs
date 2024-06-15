@@ -6,7 +6,5 @@ import preact from "@astrojs/preact";
 export default defineConfig({
   output: "hybrid",
   integrations: [tailwind(), preact()],
-  adapter: vercel({
-    isr: false,
-  }),
+  adapter: vercel(),
 });
