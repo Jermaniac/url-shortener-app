@@ -7,5 +7,5 @@ const urls = await getUrlsFromApi();
 ---
 
 <Layout title="URL">
-  <CustomTable urls={urls} />
+  <CustomTable client:load urls={urls} />
 </Layout>
