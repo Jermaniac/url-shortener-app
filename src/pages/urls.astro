@@ -1,46 +1,11 @@
 ---
-import { type URL } from "../types/api";
 import Layout from "../layouts/Layout.astro";
-import CustomTable from "../components/CustomTable.astro";
+import CustomTable from "../components/CustomTable";
 import { getUrlsFromApi } from "../services/urls";
 
 const urls = await getUrlsFromApi();
 ---
 
 <Layout title="URL">
-  <main class="flex justify-center m-5 p-4">
-    <CustomTable>
-      <Fragment slot="header">
-        <tr><th>URL</th><th>TIMES VISITED</th><th></th></tr>
-      </Fragment>
-
-      <Fragment slot="body">
-        {
-          urls &&
-            urls.map((item: URL) => (
-              <tr>
-                <td class="truncate cursor-pointer" id="truncatedText">
-                  {item.long_url}
-                </td>
-                <td>{item.visits}</td>
-                <td class="flex items-center justify-center">
-                  <a
-                    href={`${import.meta.env.PUBLIC_VITE_BACKEND_URI}/${
-                      item.short_url
-                    }`}
-                  >
-                    <img
-                      src="mouse.svg"
-                      alt="mouse-icon"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </td>
-              </tr>
-            ))
-        }
-      </Fragment>
-    </CustomTable>
-  </main>
+  <CustomTable client:load urls={urls} />
 </Layout>

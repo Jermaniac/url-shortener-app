@@ -4,11 +4,11 @@ import InfoComponent from "./InfoComponent.tsx";
 
 const Input = () => {
   const [value, setValue] = useState("");
-  const [error, setError] = useState<string>("");
+  const [message, setMessage] = useState({ error: "", success: "" });
 
   const onInput = (e: JSX.TargetedEvent<HTMLInputElement, Event>) => {
     setValue(e.currentTarget.value);
-    setError("");
+    setMessage({ error: "", success: "" });
   };
 
   const validateURL = (url: string): boolean => {
@@ -17,7 +17,7 @@ const Input = () => {
       return true;
     } catch (error) {
       if (error instanceof TypeError) {
-        console.error("Error:", error.message);
+        console.error("Error invalid URL type:", error.message);
       }
       return false;
     }
@@ -26,7 +26,7 @@ const Input = () => {
   const handleSubmit = async (e: JSX.TargetedEvent<HTMLFormElement, Event>) => {
     e.preventDefault();
     if (!validateURL(value)) {
-      setError("Please enter a valid URL.");
+      setMessage({ error: "Please enter a valid URL.", success: "" });
       return;
     }
     try {
@@ -42,9 +42,19 @@ const Input = () => {
       );
 
       if (response.ok) {
-        console.log("Request successful");
+        const data = await response.json();
+        setMessage({
+          error: "",
+          success: `New URL uploaded. The new short url is: ${
+            import.meta.env.PUBLIC_VITE_BACKEND_URI
+          }/${data.short_url}`,
+        });
       } else {
-        console.error("Request failed:", response.status);
+        if (response.status === 409)
+          setMessage({ error: "This URL is already registered.", success: "" });
+        else {
+          setMessage({ error: "Request Failed.", success: "" });
+        }
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -74,8 +84,19 @@ const Input = () => {
         >
           Shorten this URL!
         </button>
-        {error && <p className="text-red-500 font-bold mt-2">{error}</p>}
       </form>
+      {message.success && (
+        <InfoComponent
+          message={message.success}
+          colorClass="bg-gradient-to-r from-green-600 to-green-700"
+        />
+      )}
+      {message.error && (
+        <InfoComponent
+          message={message.error}
+          colorClass="bg-gradient-to-r from-red-600 to-red-700"
+        />
+      )}
       <InfoComponent
         message={
           "Hey there! ✨<br/>Tired of having super long URLs for your pages? <br/>Paste your link into the box above ⬆️ and get your new short link!"
