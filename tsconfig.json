@@ -1,9 +1,10 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "target":"ES6",
     "types": ["vite/client"],
     "moduleResolution": "node",
-    "jsx": "react-jsx",
+    "jsx": "react-jsx", 
     "jsxImportSource": "preact"
   }
 }
