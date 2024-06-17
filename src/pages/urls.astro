@@ -1,11 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CustomTable from "../components/CustomTable";
-import { getUrlsFromApi } from "../services/urls";
-
-const urls = await getUrlsFromApi();
 ---
 
 <Layout title="URL Shortener - URLs">
-  <CustomTable urls={urls} />
+  <CustomTable client:load />
 </Layout>
