@@ -1,0 +1,23 @@
+---
+import InfoComponent from "../components/InfoComponent";
+import Input from "../components/Input";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="URL Shortener">
+  <main>
+    <Input client:load />
+    <InfoComponent
+      message={"Hey there! ✨<br/>Tired of having super long URLs for your pages? <br/>Paste your link into the box above ⬆️ and get your new short link!"}
+    />
+  </main>
+</Layout>
+
+<style>
+  main {
+    display: grid;
+    justify-content: center;
+    margin: 1.25rem;
+    padding: 1rem;
+  }
+</style>
